@@ -2,14 +2,16 @@ package com.season.vaccionation.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "users")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"cpf", "email"}))
 public class User implements Serializable{
 
 	private static final long serialVersionUID = -8833857682552727691L;
@@ -18,7 +20,9 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	@Column(nullable = false)
 	private String cpf;
+	@Column(nullable = false)
 	private String email;
 	private String nasc;
 	
