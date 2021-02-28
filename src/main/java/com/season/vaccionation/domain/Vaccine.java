@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="vaccine")
@@ -17,22 +19,24 @@ public class Vaccine implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	@NotBlank
 	private String name;
 	
 	@OneToOne
+	@NotNull
 	private User user;
-	
+	@NotBlank
 	private String date;
 	
 	public Vaccine() {
 		super();
 	}
 	
+
 	
 	
 	public Vaccine(Long id, String name, User user, String date) {
-		super();
+		
 		this.id = id;
 		this.name = name;
 		this.user = user;

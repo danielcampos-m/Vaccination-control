@@ -2,6 +2,7 @@ package com.season.vaccionation.dto;
 
 import java.io.Serializable;
 
+
 public class VaccineDTO implements Serializable{
 
 	private static final long serialVersionUID = 2121072898399966830L;

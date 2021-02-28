@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"cpf", "email"}))
@@ -19,11 +20,15 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank
 	private String name;
+	@NotBlank
 	@Column(nullable = false)
 	private String cpf;
+	@NotBlank
 	@Column(nullable = false)
 	private String email;
+	@NotBlank
 	private String nasc;
 	
 	public User() {

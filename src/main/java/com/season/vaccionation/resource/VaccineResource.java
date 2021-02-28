@@ -18,15 +18,15 @@ import com.season.vaccionation.service.VaccineService;
 @RequestMapping(value="/vaccines")
 public class VaccineResource {
 	
-	
-	
 	@Autowired
 	private VaccineService vs;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody VaccineDTO vaccine){
+		
 		Vaccine newvaccine = vs.fromDTO(vaccine);
-		newvaccine = vs.insert(newvaccine);
+		vs.insert(newvaccine);
+		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("").buildAndExpand(newvaccine.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
